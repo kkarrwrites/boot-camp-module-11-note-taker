@@ -1,14 +1,8 @@
-// TODOs
-// GET /api/notes should read the db.json file and return all saved notes as JSON.
-// POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
-// When I click on an existing note in the list in the left-hand column, then that note appears in the right-hand column
-// When I click on the Write icon in the navigation at the top of the page, then I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
-// DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. In order to delete a note, you'll need to read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
-
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const notes = require("./db/db.json");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 const PORT = 3001;
@@ -37,8 +31,9 @@ app.post("/api/notes", (req, res) => {
   const { title, text } = req.body;
   if (req.body) {
     const newNote = {
-      title,
-      text,
+      title: title,
+      text: text,
+      id: uuidv4(),
     };
 
     fs.readFile("db/db.json", "utf8", (error, data) => {
@@ -56,10 +51,18 @@ app.post("/api/notes", (req, res) => {
             }
           }
         );
-        res.json(parsedData);
+        res.json(notes);
       }
     });
   }
+});
+
+// Route for deleting notes
+app.delete("/api/notes/:id", (req, res) => {
+  const { id } = req.params;
+  const deleteNote = notes.findIndex((note) => note.id == id);
+  notes.splice(deleteNote, 1);
+  return res.send();
 });
 
 app.listen(PORT, () =>
