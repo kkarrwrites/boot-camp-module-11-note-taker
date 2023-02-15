@@ -6,6 +6,8 @@ A Node.js, Express.js, and Heroku coding challenge for Full Stack Coding Boot Ca
 
 ## Description
 
+This application writes, saves, and deletes notes. The back end was built using Node.js, Express.js, uuidv4.js, a JSON file for the data, and Heroku for deployment.
+
 ## Screenshot
 
 ![README Screenshot](/public/assets/images/screenshot01.jpg)
@@ -18,7 +20,7 @@ A Node.js, Express.js, and Heroku coding challenge for Full Stack Coding Boot Ca
 
 ## Technologies
 
-JavaScript, Node.js, npm, Express.js, Markdown, Git, GitHub, VS Code, Chrome, Firefox
+JavaScript, Node.js, npm, Express.js, uuidv4.js, JSON, Markdown, Git, GitHub, VS Code, Chrome, Firefox
 
 ## License
 
