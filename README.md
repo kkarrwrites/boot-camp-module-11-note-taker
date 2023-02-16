@@ -16,7 +16,6 @@ One of the acceptance criteria for this project was to make it so that when some
 
 ![README Screenshot](/public/assets/images/screenshot01.jpg)
 ![README Screenshot](/public/assets/images/screenshot02.jpg)
-![README Screenshot](/public/assets/images/screenshot03.jpg)
 
 ## Deployment
 
