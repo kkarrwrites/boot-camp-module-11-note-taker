@@ -13,10 +13,6 @@ This application writes, saves, and deletes notes. The back end was built using 
 ![README Screenshot](/public/assets/images/screenshot01.jpg)
 ![README Screenshot](/public/assets/images/screenshot02.jpg)
 
-## Deployment
-
-[Heroku](https://little-shadow-6052.herokuapp.com/)
-
 ## Technologies
 
 JavaScript, Node.js, npm, Express.js, uuidv4.js, JSON, Markdown, Git, GitHub, VS Code, Chrome, Firefox
