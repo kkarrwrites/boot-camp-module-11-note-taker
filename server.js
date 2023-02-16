@@ -15,12 +15,12 @@ app.use(express.static("public"));
 
 // GET route for static index page
 app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "./public/index.html"))
+  res.sendFile(path.join(__dirname, "/public/index.html"))
 );
 
 // GET route for static notes page
 app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "./public/notes.html"))
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 app.listen(PORT, () =>
