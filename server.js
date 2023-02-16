@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
 const express = require("express");
+const path = require("path");
+const fs = require("fs");
 const notes = require("./db/db.json");
 const { v4: uuidv4 } = require("uuid");
 
@@ -27,7 +27,7 @@ app.get("/api/notes", (req, res) => {
 });
 
 // Route for posting notes
-app.post("/api/notes", (req, res) => {
+app.post(notes, (req, res) => {
   const { title, text } = req.body;
   if (req.body) {
     const newNote = {
@@ -36,21 +36,17 @@ app.post("/api/notes", (req, res) => {
       id: uuidv4(),
     };
 
-    fs.readFile("db/db.json", "utf8", (error, data) => {
+    fs.readFile(notes, "utf8", (error, data) => {
       if (error) {
         console.error(error);
       } else {
         const parsedData = JSON.parse(data);
         parsedData.push(newNote);
-        fs.writeFile(
-          "db/db.json",
-          JSON.stringify(parsedData, null, 2),
-          (error) => {
-            if (error) {
-              console.log(error);
-            }
+        fs.writeFile(notes, JSON.stringify(parsedData, null, 2), (error) => {
+          if (error) {
+            console.log(error);
           }
-        );
+        });
         res.json(notes);
       }
     });
